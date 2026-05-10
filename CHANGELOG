@@ -2,75 +2,75 @@
 
 ### Debug
 
-- 修复 **随机优选** 时，订阅转换后遗漏运营商信息，导致无法生成对应运营商优选IP的问题。
+- Đã khắc phục sự cố trong đó thông tin nhà điều hành bị bỏ qua sau khi chuyển đổi đăng ký trong **Tùy chọn ngẫu nhiên**, dẫn đến không thể tạo IP ưu tiên của nhà điều hành tương ứng.
 
 ### Change
 
-- 优化 订阅转换时将提交临时 `TOKEN` 用于转换，避免真实订阅地址泄露。
+- Tối ưu hóa: Trong quá trình chuyển đổi đăng ký, `TOKEN` tạm thời sẽ được gửi để chuyển đổi nhằm tránh rò rỉ địa chỉ đăng ký thực.
 
 ## [2.1.20260508041513] - 2026-05-08 04:15:13
 
 ### Change
 
-- 优化 **PROXYIP** 域名解析流程：域名会优先读取 **TXT** 记录中的反代地址，未获取到 TXT 结果时再使用 **A** 记录解析结果。
-- 当 TXT 和 A 记录均无结果时，再请求 **AAAA** 记录，减少不必要的 IPv6 查询。
+- Tối ưu hóa quy trình phân giải tên miền **PROXYIP**: tên miền sẽ đọc địa chỉ proxy ngược trong bản ghi **TXT** trước, sau đó sử dụng kết quả phân giải bản ghi **A** khi không thu được kết quả TXT.
+- Khi không có kết quả cho bản ghi TXT và A, hãy yêu cầu bản ghi **AAAA** để giảm các truy vấn IPv6 không cần thiết.
 
 ### Delete
 
-- 移除 `.william` 域名特判和 Google DoH 备用重试逻辑，普通域名也可通过 TXT 记录配置反代地址。
+- Đã xóa phán quyết đặc biệt về tên miền `.william` và logic thử lại sao lưu Google DoH. Tên miền thông thường cũng có thể được cấu hình bằng địa chỉ proxy ngược thông qua bản ghi TXT.
 
 ## [2.1.20260506175102] - 2026-05-06 17:51:02
 
 ### New
 
-- 反代模式 中新增 **TURN 协议** 代理的功能。[开源引用](https://github.com/ToiCF/CF-Workers-TURN)
-- 反代模式 中新增 **SSTP(SoftEther) 协议** 代理的功能。[开源引用](https://github.com/ToiCF/CF-Workers-SoftEther)
-- 自定义订阅 中新增添加 **链式代理** 节点的功能。
+- Đã thêm chức năng proxy **Giao thức TURN** ở chế độ chống tạo. [Tham khảo nguồn mở](https://github.com/ToiCF/CF-Workers-TURN)
+- Đã thêm chức năng proxy **giao thức SSTP(SoftEther)** ở chế độ chống tạo. [Tham khảo nguồn mở](https://github.com/ToiCF/CF-Workers-SoftEther)
+- Đã thêm chức năng thêm nút **Chain Agent** trong đăng ký tùy chỉnh.
 
 ## [2.1.20260503011925] - 2026-05-03 01:19:25
 
 ### Change
 
-- 适配 **Sing-box** 关于 ECH 自定义 **EchConfig 解析域名** 功能。
-- **自定义订阅** 适配 通配符优选域名。
+- Điều chỉnh **Sing-box** Giới thiệu về chức năng **Độ phân giải tên miền EchConfig** tùy chỉnh của ECH.
+- **Đăng ký tùy chỉnh** Điều chỉnh tên miền ưu tiên ký tự đại diện.
 
 ### Delete
 
-- 删除 **Clash** 关于 ECH 的 **EchConfig DNS服务** 备用DoH。
+- Đã xóa **Clash** trên **Dịch vụ DNS EchConfig** thay thế DoH của ECH.
 
 ## [2.1.20260417015756] - 2026-04-17 01:57:56
 
 ### Debug
 
-- 同步上游项目更新，修复 **HTTPS 代理** 已知问题。[参考链接](https://t.me/Enkelte_notif/824)
-- 修复已知问题 [#1117](https://github.com/cmliu/edgetunnel/issues/1117) [#1119](https://github.com/cmliu/edgetunnel/issues/1119) [#1120](https://github.com/cmliu/edgetunnel/issues/1120)
+- Đồng bộ hóa các bản cập nhật dự án ngược dòng và khắc phục các sự cố đã biết **HTTPS proxy**. [Liên kết tham khảo](https://t.me/Enkelte_notif/824)
+- Khắc phục các sự cố đã biết [#1117](https://github.com/cmliu/edgetunnel/issues/1117) [#1119](https://github.com/cmliu/edgetunnel/issues/1119) [#1120](https://github.com/cmliu/edgetunnel/issues/1120)
 
 ## [2.1.20260416044724] - 2026-04-16 04:47:24
 
 ### New
 
-- Trojan 协议现已支持通过 UDP Over TCP 方式进行 DNS 查询。
-- 反向代理模式中新增 **HTTPS 代理** 功能。[开源引用](https://github.com/ToiCF/CF-Workers-HTTPS)
+- Giao thức Trojan hiện hỗ trợ truy vấn DNS qua UDP Over TCP.
+- Đã thêm chức năng **HTTPS proxy** ở chế độ proxy ngược. [Tham khảo nguồn mở](https://github.com/ToiCF/CF-Workers-HTTPS)
 
 ## [2.1.20260413174651] - 2026-04-13 17:46:51
 
 ### Change
 
-- 优化WebSocket数据传输逻辑，支持BYOB模式以提高性能和灵活性。
+- Tối ưu hóa logic truyền dữ liệu WebSocket và hỗ trợ chế độ BYOB để cải thiện hiệu suất và tính linh hoạt.
 
 ## [2.1.20260410060317] - 2026-04-10 06:03:17
 
 ### New
 
-- 新增 Shadowsocks 协议 **AEAD 加密传输**，为非 TLS 传输模式提供内容加密。
+- Đã thêm giao thức Shadowsocks **Truyền mã hóa AEAD** để cung cấp mã hóa nội dung cho chế độ truyền không phải TLS.
 
 ## [2.1.0]
 
 ### New
-- VLESS/Trojan 协议现已支持 XHTTP 和 gRPC 传输方式。
+- Giao thức VLESS/Trojan hiện hỗ trợ truyền tải XHTTP và gRPC.
 
 ## [2.0.0]
 
 ### New
 
-- 项目架构已完全重写，新增前端 Web 页面。[前端源码](https://github.com/EDT-Pages/EDT-Pages.github.io)
+- Kiến trúc dự án đã được viết lại hoàn toàn và một trang web giao diện người dùng mới đã được thêm vào. [Mã nguồn giao diện người dùng](https://github.com/EDT-Pages/EDT-Pages.github.io)

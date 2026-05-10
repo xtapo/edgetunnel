@@ -1,5 +1,5 @@
 # 🚀 edgetunnel 2.1
-![后台页面](./img.png)
+![Trang phụ trợ](./img.png)
 
 [![Stars](https://img.shields.io/github/stars/cmliu/edgetunnel?style=flat-square&logo=github)](https://github.com/cmliu/edgetunnel/stargazers)
 [![Forks](https://img.shields.io/github/forks/cmliu/edgetunnel?style=flat-square&logo=github)](https://github.com/cmliu/edgetunnel/network/members)
@@ -11,133 +11,133 @@
 
 ---
 
-## 📖 项目简介
+## 📖Giới thiệu dự án
 
-**edgetunnel** 是一个基于 CF Workers/Pages 平台的边缘计算隧道解密方案。它能够高效地处理网络流量，并提供强大的管理面板和灵活的节点配置能力。
+**edgetunnel** là giải pháp giải mã đường hầm điện toán biên dựa trên nền tảng CF Workers/Pages. Nó xử lý lưu lượng mạng một cách hiệu quả và cung cấp bảng quản lý mạnh mẽ cũng như khả năng cấu hình nút linh hoạt.
 
-- 🖥️ **Demo 演示站点**：[https://EDT-Pages.github.io/admin](https://EDT-Pages.github.io/admin)
+- 🖥️ **Trang web demo demo**: [https://EDT-Pages.github.io/admin](https://EDT-Pages.github.io/admin)
 
-### ✨ 核心特性
+### ✨ Tính năng cốt lõi
 
-- 🛡️ **协议支持**：支持 VLESS、Trojan、Shadowsocks 等主流协议，深度集成加密传输。
-- 📊 **管理面板**：内置可视化后台，支持实时配置修改、日志查看及流量统计。
-- 🛠️ **部署灵活**：完整适配 CF Workers 及 CF Pages (GitHub / 上传)。
-- 🔄 **订阅系统**：内置自动订阅生成及混淆转换，适配主流客户端（Clash, Sing-box, Surge 等）。
-- ⚡ **性能加速**：支持自定义 ProxyIP、SOCKS5/HTTP 链式代理及优选 API，优化网络延迟。
-- 🌐 **多台适配**：完美适配 Windows, Android, iOS, MacOS 及各种软路由固件。
+- 🛡️ **Hỗ trợ giao thức**: Hỗ trợ các giao thức chính thống như VLESS, Trojan, Shadowsocks, v.v. và tích hợp sâu đường truyền được mã hóa.
+- 📊 **Bảng quản lý**: Tích hợp phần phụ trợ trực quan, hỗ trợ sửa đổi cấu hình theo thời gian thực, xem nhật ký và thống kê lưu lượng truy cập.
+- 🛠️ **Triển khai linh hoạt**: hoàn toàn thích ứng với Công nhân CF và Trang CF (GitHub / Tải lên).
+- 🔄 **Hệ thống đăng ký**: Tích hợp sẵn tính năng tạo đăng ký và chuyển đổi mã hóa, phù hợp với các ứng dụng khách phổ thông (Clash, Sing-box, Surge, v.v.).
+- ⚡ **Tăng tốc hiệu suất**: Hỗ trợ ProxyIP tùy chỉnh, proxy chuỗi SOCKS5/HTTP và API ưu tiên để tối ưu hóa độ trễ mạng.
+- 🌐 **Nhiều khả năng thích ứng**: Tương thích hoàn hảo với Windows, Android, iOS, MacOS và các phần mềm định tuyến mềm khác nhau.
 
 ---
 
-## 💡 快速部署
+## 💡 Triển khai nhanh chóng
 >[!TIP]
-> 📖 **详尽图文教程**：[edgetunnel 部署指南](https://cmliussss.com/p/edt2/)
+> 📖 **Hướng dẫn đồ họa chi tiết**: [hướng dẫn triển khai edgetunnel](https://cmliussss.com/p/edt2/)
 
 >[!WARNING]
-> ⚠️ **Error 1101问题**：[视频解析](https://www.youtube.com/watch?v=r4uVTEJptdE)
+> ⚠️ **Vấn đề lỗi 1101**: [Phân tích video](https://www.youtube.com/watch?v=r4uVTEJptdE)
 
-### ⚙️ Workers 部署
+### ⚙️ Triển khai công nhân
 
 <details>
-<summary><code><strong>「 Workers 部署文字教程 」</strong></code></summary>
+<summary><code><strong> 「Văn bản hướng dẫn triển khai công nhân」</strong></code></summary>
 
-1. 部署 CF Worker：
-   - 在 CF Worker 控制台中创建一个新的 Worker。
-   - 将 [worker.js](https://github.com/cmliu/edgetunnel/blob/main/_worker.js) 的内容粘贴到 Worker 编辑器中。
-   - 在左侧的 `设置`选项卡中，选择 `变量` > `添加变量`。
-     变量名称填写**ADMIN**，值则为你的管理员密码，后点击 `保存`即可。
+1. Triển khai CF Worker:
+   - Tạo một Worker mới trong bảng điều khiển CF Worker.
+   - Dán nội dung của [worker.js](https://github.com/cmliu/edgetunnel/blob/main/_worker.js) vào trình chỉnh sửa Worker.
+   - Trong tab `Cài đặt` ở bên trái, chọn `Biến` > `Thêm biến`.
+     Điền **ADMIN** cho tên biến và giá trị là mật khẩu quản trị viên của bạn, sau đó nhấp vào `Save`.
 
-2. 绑定 KV 命名空间：
-   - 在 `绑定`选项卡中选择 `添加绑定 +` > `KV 命名空间` > `添加绑定`，然后选择一个已有的命名空间或创建一个新的命名空间进行绑定。
-   - `变量名称`填写**KV**，然后点击 `添加绑定`即可。
+2. Liên kết không gian tên KV:
+   - Trong tab `Bindings`, chọn `Add Binding +` > `KV Namespace` > `Add Binding`, sau đó chọn một namespace hiện có hoặc tạo một namespace mới để liên kết.
+   - Điền **KV** vào `Tên biến`, sau đó nhấp vào `Thêm ràng buộc`.
 
-3. 给 Workers绑定 自定义域： 
-   - 在 workers控制台的 `触发器`选项卡，下方点击 `添加自定义域`。
-   - 填入你已转入 CF 域名解析服务的次级域名，例如:`vless.google.com`后 点击`添加自定义域`，等待证书生效即可。
+3. Liên kết các trường tùy chỉnh với Công nhân:
+   - Trong tab `Trình kích hoạt` của bảng điều khiển dành cho nhân viên, hãy nhấp vào `Thêm miền tùy chỉnh` bên dưới.
+   - Điền tên miền phụ mà bạn đã transfer sang dịch vụ phân giải tên miền CF, ví dụ: `vless.google.com`, sau đó nhấn vào `Add Custom Domain` và đợi chứng chỉ có hiệu lực.
 
-4. 访问后台：
-   - 访问 `https://vless.google.com/admin` 输入管理员密码即可登录后台。
+4. Truy cập phần phụ trợ:
+   - Truy cập `https://vless.google.com/admin` và nhập mật khẩu quản trị viên để đăng nhập vào phần phụ trợ.
 
 </details>
 
-### 🛠 Pages 上传 部署方法 **最佳推荐!!!** [图文教程](https://cmliussss.com/p/edt2/)
+### 🛠 Phương thức triển khai tải lên trang **Đề xuất tốt nhất!!!** [Hướng dẫn đồ họa](https://cmliussss.com/p/edt2/)
 
 <details>
-<summary><code><strong>「 Pages 上传文件部署文字教程 」</strong></code></summary>
+<summary><code><strong> 「Hướng dẫn văn bản triển khai tệp tải lên trang」</strong></code></summary>
 
-1. 部署 CF Pages：
-   - 下载 [main.zip](https://github.com/cmliu/edgetunnel/archive/refs/heads/main.zip) 文件，并点上 Star !!!
-   - 在 CF Pages 控制台中选择 `上传资产`后，为你的项目取名后点击 `创建项目`，然后上传你下载好的 [main.zip](https://github.com/cmliu/edgetunnel/archive/refs/heads/main.zip) 文件后点击 `部署站点`。
-   - 部署完成后点击 `继续处理站点` 后，选择 `设置` > `环境变量` > **制作**为生产环境定义变量 > `添加变量`。
-     变量名称填写**ADMIN**，值则为你的管理员密码，后点击 `保存`即可。
-   - 返回 `部署` 选项卡，在右下角点击 `创建新部署` 后，重新上传 [main.zip](https://github.com/cmliu/edgetunnel/archive/refs/heads/main.zip) 文件后点击 `保存并部署` 即可。
+1. Triển khai các trang CF:
+   - Tải xuống tệp [main.zip](https://github.com/cmliu/edgetunnel/archive/refs/heads/main.zip) và nhấp vào Sao!!!
+   - Sau khi chọn `Tải nội dung lên` trong bảng điều khiển Trang CF, đặt tên cho dự án của bạn và nhấp vào `Tạo dự án`, sau đó tải lên tệp [main.zip](https://github.com/cmliu/edgetunnel/archive/refs/heads/main.zip) mà bạn đã tải xuống và nhấp vào `Triển khai trang web`.
+   - Sau khi triển khai hoàn tất, nhấp vào `Tiếp tục xử lý trang` và chọn `Cài đặt` > `Biến môi trường` > **Tạo** để xác định các biến cho môi trường sản xuất > `Thêm biến`.
+     Điền **ADMIN** cho tên biến và giá trị là mật khẩu quản trị viên của bạn, sau đó nhấp vào `Save`.
+   - Quay lại tab `Triển khai`, nhấp vào `Tạo Triển khai Mới` ở góc dưới bên phải, tải lên lại tệp [main.zip](https://github.com/cmliu/edgetunnel/archive/refs/heads/main.zip) và nhấp vào `Save and Deploy`.
 
-2. 绑定 KV 命名空间：
-   - 在 `设置`选项卡中选择 `绑定` > `+ 添加` > `KV 命名空间`，然后选择一个已有的命名空间或创建一个新的命名空间进行绑定。
-   - `变量名称`填写**KV**，然后点击 `保存`后重试部署即可。
+2. Liên kết không gian tên KV:
+   - Trong tab `Cài đặt` chọn `Binding` > `+ Add` > `KV Namespace`, sau đó chọn một namespace hiện có hoặc tạo một namespace mới để liên kết.
+   - Điền **KV** vào `Tên biến`, sau đó nhấp vào `Lưu` và thử triển khai lại.
 
-3. 给 Pages绑定 CNAME自定义域：[视频教程](https://www.youtube.com/watch?v=LeT4jQUh8ok&t=851s)
-   - 在 Pages控制台的 `自定义域`选项卡，下方点击 `设置自定义域`。
-   - 填入你的自定义次级域名，注意不要使用你的根域名，例如：
-     您分配到的域名是 `fuck.cloudns.biz`，则添加自定义域填入 `lizi.fuck.cloudns.biz`即可；
-   - 按照 CF 的要求将返回你的域名DNS服务商，添加 该自定义域 `lizi`的 CNAME记录 `edgetunnel.pages.dev` 后，点击 `激活域`即可。
+3. Liên kết miền tùy chỉnh CNAME với Trang: [Video hướng dẫn](https://www.youtube.com/watch?v=LeT4jQUh8ok&t=851s)
+   - Trong tab `Miền tùy chỉnh` của bảng điều khiển Trang, nhấp vào `Đặt miền tùy chỉnh` bên dưới.
+   - Điền tên miền phụ tùy chỉnh của bạn, lưu ý không sử dụng tên miền gốc của bạn, ví dụ:
+     Tên miền bạn được chỉ định là `fuck.cloudns.biz`, sau đó thêm miền tùy chỉnh và điền vào `lizi.fuck.cloudns.biz`;
+   - Theo yêu cầu của CF, nhà cung cấp dịch vụ DNS tên miền của bạn sẽ được trả lại. Sau khi thêm bản ghi CNAME `edgetunnel.pages.dev` của miền tùy chỉnh `lizi`, hãy nhấp vào `Kích hoạt miền`.
    
-4. 访问后台：
-   - 访问 `https://lizi.fuck.cloudns.biz/admin` 输入管理员密码即可登录后台。
+4. Truy cập phần phụ trợ:
+   - Truy cập `https://lizi.fuck.cloudns.biz/admin` và nhập mật khẩu quản trị viên để đăng nhập vào phần phụ trợ.
 
 </details>
 
-### 🛠 Pages + GitHub 部署方法
+### 🛠 Trang + phương thức triển khai GitHub
 
 <details>
-<summary><code><strong>「 Pages + GitHub 部署文字教程 」</strong></code></summary>
+<summary><code><strong> 「Hướng dẫn sử dụng văn bản triển khai trang + GitHub」</strong></code></summary>
 
-1. 部署 CF Pages：
-   - 在 Github 上先 Fork 本项目，并点上 Star !!!
-   - 在 CF Pages 控制台中选择 `连接到 Git`后，选中 `edgetunnel`项目后点击 `开始设置`。
-   - 在 `设置构建和部署`页面下方，选择 `环境变量（高级）`后并 `添加变量`
-     变量名称填写**ADMIN**，值则为你的管理员密码，后点击 `保存并部署`即可。
+1. Triển khai các trang CF:
+   - Fork dự án này trên Github và nhấp vào Sao!!!
+   - Sau khi chọn `Kết nối với Git` trong bảng điều khiển Trang CF, chọn dự án `edgetunnel` và nhấp vào `Bắt đầu cài đặt`.
+   - Trong trang `Thiết lập Xây dựng và Triển khai`, chọn `Biến môi trường (Nâng cao)` và `Thêm biến`
+     Điền **ADMIN** cho tên biến và giá trị là mật khẩu quản trị viên của bạn, sau đó nhấp vào `Save and Deploy`.
 
-2. 绑定 KV 命名空间：
-   - 在 `设置`选项卡中选择 `绑定` > `+ 添加` > `KV 命名空间`，然后选择一个已有的命名空间或创建一个新的命名空间进行绑定。
-   - `变量名称`填写**KV**，然后点击 `保存`后重试部署即可。
+2. Liên kết không gian tên KV:
+   - Trong tab `Cài đặt` chọn `Binding` > `+ Add` > `KV Namespace`, sau đó chọn một namespace hiện có hoặc tạo một namespace mới để liên kết.
+   - Điền **KV** vào `Tên biến`, sau đó nhấp vào `Lưu` và thử triển khai lại.
 
-3. 给 Pages绑定 CNAME自定义域：[视频教程](https://www.youtube.com/watch?v=LeT4jQUh8ok&t=851s)
-   - 在 Pages控制台的 `自定义域`选项卡，下方点击 `设置自定义域`。
-   - 填入你的自定义次级域名，注意不要使用你的根域名，例如：
-     您分配到的域名是 `fuck.cloudns.biz`，则添加自定义域填入 `lizi.fuck.cloudns.biz`即可；
-   - 按照 CF 的要求将返回你的域名DNS服务商，添加 该自定义域 `lizi`的 CNAME记录 `edgetunnel.pages.dev` 后，点击 `激活域`即可。
+3. Liên kết miền tùy chỉnh CNAME với Trang: [Video hướng dẫn](https://www.youtube.com/watch?v=LeT4jQUh8ok&t=851s)
+   - Trong tab `Miền tùy chỉnh` của bảng điều khiển Trang, nhấp vào `Đặt miền tùy chỉnh` bên dưới.
+   - Điền tên miền phụ tùy chỉnh của bạn, lưu ý không sử dụng tên miền gốc của bạn, ví dụ:
+     Tên miền bạn được chỉ định là `fuck.cloudns.biz`, sau đó thêm miền tùy chỉnh và điền vào `lizi.fuck.cloudns.biz`;
+   - Theo yêu cầu của CF, nhà cung cấp dịch vụ DNS tên miền của bạn sẽ được trả lại. Sau khi thêm bản ghi CNAME `edgetunnel.pages.dev` của miền tùy chỉnh `lizi`, hãy nhấp vào `Kích hoạt miền`.
 
-4. 访问后台：
-   - 访问 `https://lizi.fuck.cloudns.biz/admin` 输入管理员密码即可登录后台。
+4. Truy cập phần phụ trợ:
+   - Truy cập `https://lizi.fuck.cloudns.biz/admin` và nhập mật khẩu quản trị viên để đăng nhập vào phần phụ trợ.
 
 </details>
 
 ---
 
-## 🔑 环境变量说明
+## 🔑 Mô tả biến môi trường
 
-| 变量名 | 必填 | 示例 | 详细备注 |
+| Tên biến | Bắt buộc | Ví dụ | Nhận xét chi tiết |
 | :--- | :---: | :--- | :--- |
-| **ADMIN** | ✅ | `123456` | 后台管理面板登录密码 |
-| **KEY** | ❌ | `CMLiussss` | 快速订阅路径密钥，访问 `/CMLiussss` 即可快速获取节点 |
-| **UUID** | ❌ | `90cd4a77-141a-43c9-991b-08263cfe9c10` | 强制固定UUID，只支持**UUIDv4**标准格式 |
-| **PROXYIP** | ❌ | `proxyip.cmliussss.net:443` | 全局自定义反代 IP  |
-| **URL** | ❌ | `https://cloudflare-error-page-3th.pages.dev` | 默认主页伪装地址（可填写网页 URL 或 `1101`） |
-| **GO2SOCKS5** | ❌ | `blog.cmliussss.com`,`*.ip111.cn`,`*google.com` | 强制走 SOCKS5 的名单 (`*` 为全局，域名用逗号分隔) |
-| **DEBUG** | ❌ | `1`或`true` | **开发者模式**，默认关闭调试日志功能（console.log），设置`1`或`true`则开启调试日志功能 |
-| **OFF_LOG** | ❌ | `1`或`true` | 默认开启日志记录功能，设置`1`或`true`则关闭日志记录功能 |
-| **BEST_SUB** | ❌ | `1`或`true` | 默认关闭作为**优选订阅生成器**的功能，设置`1`或`true`则开启该功能 |
+| **Quản trị viên** | ✅ | `123456` | Mật khẩu đăng nhập bảng quản lý phụ trợ |
+| **CHÌA KHÓA** | ❌ | `CMLiussss` | Nhanh tay đăng ký key đường dẫn, truy cập `/CMLiussss` để nhanh chóng lấy node |
+| **UUID** | ❌ | `90cd4a77-141a-43c9-991b-08263cfe9c10` | Buộc cố định UUID, chỉ hỗ trợ định dạng chuẩn **UUIDv4** |
+| **PROXYIP** | ❌ | `proxyip.cmliussss.net:443` | IP chống thế hệ tùy chỉnh toàn cầu |
+| **URL** | ❌ | `https://cloudflare-error-page-3th.pages.dev` | Địa chỉ ngụy trang trang chủ mặc định (bạn có thể điền URL trang web hoặc `1101`) |
+| **GO2SOCKS5** | ❌ | `blog.cmliussss.com`,`*.ip111.cn`,`*google.com` | Danh sách SOCKS5 bắt buộc (`*` là toàn cục, tên miền được phân tách bằng dấu phẩy) |
+| **GỠ LỖI** | ❌ | `1` hoặc `true` | **Chế độ nhà phát triển**, chức năng nhật ký gỡ lỗi (console.log) bị tắt theo mặc định, đặt `1` hoặc `true` để bật chức năng nhật ký gỡ lỗi |
+| **OFF_LOG** | ❌ | `1` hoặc `true` | Chức năng ghi nhật ký được bật theo mặc định. Đặt `1` hoặc `true` sẽ tắt chức năng ghi nhật ký |
+| **BEST_SUB** | ❌ | `1` hoặc `true` | Chức năng **Trình tạo đăng ký ưu tiên** bị tắt theo mặc định. Đặt `1` hoặc `true` để bật chức năng này |
 
 ---
 
-## 🔧 高级实用技巧
-如需修改 **订阅地址里的TOKEN** 和 **用于节点验证的UUID** ，可通过修改变量
-1. 修改`ADMIN`或`KEY`变量的值，可以随机修改 **订阅地址里的TOKEN** 和 **用于节点验证的UUID**
-2. 设置`UUID`变量可以强制固定 **订阅地址里的TOKEN** 和 **用于节点验证的UUID**，注意必须是**UUIDv4**标准格式，否则会导致节点无法使用。
+## 🔧 Kỹ năng thực hành nâng cao
+Nếu bạn cần sửa đổi **TOKEN** trong địa chỉ đăng ký và **UUID** được sử dụng để xác minh nút, bạn có thể sửa đổi các biến
+1. Sửa đổi giá trị của biến `ADMIN` hoặc `KEY`, bạn có thể sửa đổi ngẫu nhiên **TOKEN** trong địa chỉ đăng ký và **UUID được sử dụng để xác minh nút**
+2. Việc đặt biến `UUID` có thể buộc sửa **TOKEN** trong địa chỉ đăng ký và **UUID** được sử dụng để xác minh nút. Lưu ý rằng nó phải ở định dạng chuẩn **UUIDv4**, nếu không nút sẽ không sử dụng được.
 
-本工具支持通过 **PATH路径** 动态切换底层代理方案：
+Công cụ này hỗ trợ chuyển đổi động giải pháp proxy cơ bản thông qua **đường dẫn PATH**:
 
-- 指定 `PROXYIP` 案例
+- Chỉ định trường hợp `PROXYIP`
    ```url
    /proxyip=proxyip.cmliussss.net
    /?proxyip=proxyip.cmliussss.net
@@ -147,50 +147,50 @@
    ```url
    /socks5=user:password@127.0.0.1:1080
    /?socks5=user:password@127.0.0.1:1080
-   /socks://dXNlcjpwYXNzd29yZA==@127.0.0.1:1080 (默认激活全局SOCKS5)
-   /socks5://user:password@127.0.0.1:1080 (默认激活全局SOCKS5)
+   /socks://dXNlcjpwYXNzd29yZA==@127.0.0.1:1080 (SOCKS5 toàn cầu được kích hoạt theo mặc định)
+   /socks5://user:password@127.0.0.1:1080 (SOCKS5 toàn cầu được kích hoạt theo mặc định)
    ```
 
-- 指定 `HTTP代理` 案例
+- Chỉ định trường hợp `HTTP proxy`
    ```url
    /http=user:password@127.0.0.1:1080
-   /http://user:password@127.0.0.1:8080 (默认激活全局SOCKS5)
+   /http://user:password@127.0.0.1:8080 (SOCKS5 toàn cầu được kích hoạt theo mặc định)
    ```
 
 ---
 
-## 💻 客户端适配情况
+## 💻 Trạng thái thích ứng của khách hàng
 
-| 平台 | 推荐客户端 | 备注 |
+| Nền tảng | Khách hàng được đề xuất | Bình luận |
 | :--- | :--- | :--- |
-| **Windows** | [v2rayN](https://github.com/2dust/v2rayN), [FlClash](https://github.com/chen08209/FlClash), [mihomo-party](https://github.com/mihomo-party-org/mihomo-party), [Clash Verge Rev](https://github.com/ClashVerge/ClashVerge-Rev) | 全面支持 |
-| **Android** | [ClashMetaForAndroid](https://github.com/MetaCubeX/ClashMetaForAndroid), [FlClash](https://github.com/chen08209/FlClash), [v2rayNG](https://github.com/2dust/v2rayNG) | 建议使用 Meta 核心 |
-| **iOS** | [Surge](https://surgeapp.com/), [Shadowrocket](https://shadowrocket.com/), [Stash](https://stashapp.com/) | 完美适配 |
-| **MacOS** | [FlClash](https://github.com/chen08209/FlClash), [mihomo-party](https://github.com/mihomo-party-org/mihomo-party), [Clash Verge Rev](https://github.com/ClashVerge/ClashVerge-Rev), [Surge](https://surgeapp.com/) | M1/M2 完美兼容 |
+| **Cửa sổ** | [v2rayN](https://github.com/2dust/v2rayN), [FlClash](https://github.com/chen08209/FlClash), [mihomo-party](https://github.com/mihomo-party-org/mihomo-party), [Clash Verge Rev](https://github.com/ClashVerge/ClashVerge-Rev) | Hỗ trợ đầy đủ |
+| **Android** | [ClashMetaForAndroid](https://github.com/MetaCubeX/ClashMetaForAndroid), [FlClash](https://github.com/chen08209/FlClash), [v2rayNG](https://github.com/2dust/v2rayNG) | Nên sử dụng Meta core |
+| **iOS** | [Surge](https://surgeapp.com/), [Shadowrocket](https://shadowrocket.com/), [Stash](https://stashapp.com/) | Hoàn toàn phù hợp |
+| **MacOS** | [FlClash](https://github.com/chen08209/FlClash), [mihomo-party](https://github.com/mihomo-party-org/mihomo-party), [Clash Verge Rev](https://github.com/ClashVerge/ClashVerge-Rev), [Surge](https://surgeapp.com/) | M1/M2 tương thích hoàn hảo |
 
 ---
 
-## ⭐ 项目热度
+## ⭐ Mức độ phổ biến của dự án
 
 [![Stargazers over time](https://starchart.cc/cmliu/edgetunnel.svg?variant=adaptive)](https://starchart.cc/cmliu/edgetunnel)
 
 ---
 
-## 🙏 特别鸣谢
-### 💖 赞助支持 - 提供云服务器维持[订阅转换服务](https://sub.cmliussss.net/)
+## 🙏 Lời cảm ơn đặc biệt
+### 💖 Hỗ trợ tài trợ - Cung cấp bảo trì máy chủ đám mây [dịch vụ chuyển đổi đăng ký](https://sub.cmliussss.net/)
 - [Alice](https://url.cmliussss.com/alice)
 - [EasyLinks](https://www.vmrack.net?ref_code=5Zk7eNhbgL7)
 - [ZMTO(VTEXS)](https://zmto.com/?affid=1532)
 
-### 🛠 开源代码引用
+### 🛠 Tham khảo mã nguồn mở
 - [zizifn/edgetunnel](https://github.com/zizifn/edgetunnel)
 - [3Kmfi6HP/EDtunnel](https://github.com/6Kmfi6HP/EDtunnel)
 - [SHIJS1999/cloudflare-worker-vless-ip](https://github.com/SHIJS1999/cloudflare-worker-vless-ip)
 - [Stanley-baby](https://github.com/Stanley-baby)
 - [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash/config)
-- [股神](https://t.me/CF_NAT/38889)
+- [Thần chứng khoán](https://t.me/CF_NAT/38889)
 - [Workers/Pages Metrics](https://t.me/zhetengsha/3382)
-- [白嫖哥](https://t.me/bestcfipas)
+- [Bai anh trai điếm](https://t.me/bestcfipas)
 - [Mingyu](https://github.com/ymyuuu/workers-vless)
 - [ToiCF/CF-Workers-HTTPS](https://github.com/ToiCF/CF-Workers-HTTPS)
 - [ToiCF/CF-Workers-TURN](https://github.com/ToiCF/CF-Workers-TURN)
@@ -202,14 +202,14 @@
 
 ---
 
-## ⚠️ 免责声明
+## ⚠️ Tuyên bố miễn trừ trách nhiệm
 
-1. 本项目（"edgetunnel"）仅供**教育、科学研究及个人安全测试**之目的。
-2. 使用者在下载或使用本项目代码时，必须严格遵守所在地区的法律法规。
-3. 作者 **cmliu** 对任何滥用本项目代码导致的行为或后果均不承担任何责任。
-4. 本项目不对因使用代码引起的任何直接或间接损害负责。
-5. 建议在测试完成后 24 小时内删除本项目相关部署。
+1. Dự án này ("edgetunnel") chỉ dành cho mục đích **giáo dục, nghiên cứu khoa học và thử nghiệm an toàn cá nhân**.
+2. Người dùng phải tuân thủ nghiêm ngặt luật pháp và quy định của khu vực mình khi tải xuống hoặc sử dụng mã của dự án này.
+3. Tác giả **cmliu** không chịu trách nhiệm về bất kỳ hành động hoặc hậu quả nào do việc sử dụng sai mã dự án này.
+4. Dự án này không chịu trách nhiệm cho bất kỳ thiệt hại trực tiếp hoặc gián tiếp nào do việc sử dụng mã gây ra.
+5. Nên xóa hoạt động triển khai liên quan đến dự án này trong vòng 24 giờ sau khi hoàn tất quá trình thử nghiệm.
 
 ---
 
-**如果您觉得项目对您有帮助，请给一个 Star 🌟，这是对我最大的鼓励！**
+**Nếu bạn cho rằng dự án này hữu ích với bạn, hãy cho một ngôi sao 🌟, đây là niềm động viên lớn nhất của tôi! **
